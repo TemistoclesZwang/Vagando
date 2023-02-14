@@ -13,16 +13,18 @@ Temistocles Zwang, Joaab Sousa, Iago José
 
 ### 💻 Nome provisório dos softwares: 
    
-   * (primário) Vagando 
-   * (Secundário: Circalc)
+   * Primário: Vagando 
+   * Secundário: Circalc
    
    Área a que se aplica: 
    
-   * (primário) Solução para problemas de vagas dos alunos do IFPI (Secundário: Elétrica/eletrotécnica)
+   * Primário: Solução para problemas de vagas dos alunos do IFPI 
+   * Secundário: Elétrica/eletrotécnica
    
    Principal problema que ele resolverá: 
    
-   * (primário) Alunos que não encontram vagas (Secundário: Reduzir trabalho braçal, agilizando o projeto)
+   * Primário: Alunos que não encontram vagas.
+   * Secundário: Reduzir trabalho braçal, agilizando o projeto.
    
 <!-- ### 4) Um membro da equipe deve responder a atividade com o link do repositório; -->
 
