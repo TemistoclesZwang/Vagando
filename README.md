@@ -5,6 +5,8 @@
 ### ✍️ Membros da equipe:
 Temistocles Zwang, Joaab Sousa, Iago José 
 
+### Sobre o projeto:
+
 * Ferramenta de gerenciamento de projeto: Trello (Kanban + Scrum)
 
 * Tema principal: Será criado uma página com os perfis dos alunos do IFPI que procuram vagas.
