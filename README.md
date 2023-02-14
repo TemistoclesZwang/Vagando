@@ -5,7 +5,7 @@
 ### ✍️ Membros da equipe:
 Temistocles Zwang, Joaab Sousa, Iago José 
 
-### :pencil: Sobre o projeto:
+### 📝 Sobre o projeto:
 
 * Ferramenta de gerenciamento de projeto: Trello (Kanban + Scrum)
 
