@@ -5,7 +5,7 @@
 ### ✍️ 2) Informem no repositório: membros da equipe (até 3);
 Membros da equipe: Temistocles Zwang, Joaab Sousa, Iago José 
 
-* Ferramenta de gerenciamento de projeto: Trello
+* Ferramenta de gerenciamento de projeto: Trello (Kanban + Scrum)
 
 * Tema principal: Será criado uma página com os perfis dos alunos do IFPI que procuram vagas.
 
