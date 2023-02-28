@@ -31,3 +31,9 @@ Temistocles Zwang, Joaab Sousa, Iago José
 <!-- ### 4) Um membro da equipe deve responder a atividade com o link do repositório; -->
 
 <!-- ### 5) Apenas os membros da equipe que apresentarem a atividade pontuarão. -->
+
+Funcionalidades:
+Definição de preferências - O tipo de perfil que a empresa verá na sua timeline
+Realizar Cadastro - Coleta informações necessarias para fazer o login e validar os dados.
+Acessar perfil - Funcionalidade que uma empresa usa para exibir informações do aluno.
+Exibir Notificações - Exibe notificações como: Visualização de empresa, mensagem de empresa e mensagem do sistema.
