@@ -1,5 +1,5 @@
 ### ✍️ Membros da equipe:
-Temistocles Zwang, Joaab Sousa, Iago José 
+Temistocles Zwang, Joaab Sousa, Iago José
 
 ### 📝 Sobre o projeto:
 
