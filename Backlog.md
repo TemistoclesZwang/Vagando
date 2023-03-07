@@ -9,6 +9,7 @@ Temistocles Zwang, Joaab Sousa, Iago José
 * Nome: Vagando
 
 ### 📝 Funcionalidades:
+* video com as funcionalidades https://drive.google.com/file/d/1TI3MA3_-IWrLQyj6bA9mg26hvXGLyEhN/view?usp=share_link
 
 * Filtrar habilidades - O tipo de perfil que a empresa verá na sua timeline.
 * Realizar Cadastro - Coleta informações necessarias para fazer o login e validar os dados.
