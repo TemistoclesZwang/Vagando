@@ -16,4 +16,7 @@ Temistocles Zwang, Joaab Sousa, Iago José
 * Exibir Notificações - Exibe notificações como: Visualização de empresa, mensagem de empresa e mensagem do sistema.
 * Buscar perfil - Buscar um perfil específico dados os parâmetros.
 
+![image](https://user-images.githubusercontent.com/61996692/223539391-340fc599-eed2-4d59-bfff-72d0da3b3eca.png)
+
+
 https://github.com/TemistoclesZwang/Vagando
