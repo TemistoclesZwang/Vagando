@@ -5,6 +5,8 @@ Temistocles Zwang, Joaab Sousa, Iago José
 ### Product backlog:
 https://docs.google.com/spreadsheets/d/1P2yR3yC7yIPYrSsHkRwpXY6vDNaX7q8WpcBvdgDXUJs/edit#gid=0
 
+### Video de apresentação do refinamento do bakclog:
+https://youtu.be/dVKHPmxP1r8
 
 ### 📝 Sobre o projeto:
 
