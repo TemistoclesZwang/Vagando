@@ -1,0 +1,9 @@
+.wrpAll {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    /* .pega 1 fração pra sidebar e o resto é do conteúdo */
+    min-height: 100vh;
+    /* .para preencher do topo ao fim da página a sidebar */
+    background-color: #897ac3;
+
+}

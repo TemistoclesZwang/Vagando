@@ -1,0 +1,29 @@
+.board {
+    /* .conteúdo do quadro ao lado da sidebar */
+    height: 100%;
+    /* .para o quadro preencher do topo ao fim da página */
+    background-color: #fbfaff;
+    border-top-left-radius: 10.2rem;
+    /* .para fazer o border radius */
+    padding: 4.8rem 3.2rem;
+}
+
+.perfil {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* .perfil > img {
+    clip-path: circle();
+    width: 10rem;
+    height: 10rem;
+} */
+
+.fotoPerfil{
+    color: rgb(182, 127, 255);
+    border-radius: 5rem;
+    width: 10rem;
+    height: 10rem;
+}

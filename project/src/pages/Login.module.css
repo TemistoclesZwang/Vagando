@@ -1,0 +1,66 @@
+.wrp {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    background: linear-gradient(to bottom, var(--azulMedio), #193270);
+    height: 100vh;
+    width: 100vw;
+    padding-left: 20rem;
+
+}
+
+@media screen and (max-width: 1048px) {
+    .wrp {
+        flex-direction: column;
+        background: imageurl('../assets/loginPeople.png');
+        background-repeat: no-repeat;
+        padding-left: 0;
+    }
+
+    .wrpLogin {
+        margin-top: 5rem;
+    }
+
+    .bonecos {
+        margin-top: -5rem;
+        margin-right: 31rem;
+        margin-left: 0 auto;
+        overflow: hidden;
+    }
+
+}
+
+
+.wrpLogin {
+    background-color: var(--meuBranco);
+    border-radius: 2rem;
+    height: 65rem;
+    width: 40rem;
+
+}
+
+form {
+    margin: 9rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+button {
+    margin-top: 7rem;
+}
+
+h1,
+h3 {
+    text-align: center;
+}
+
+.bonecos {
+    overflow: hidden;
+    margin-left: 25rem;
+}
+
+.logo {
+    margin-bottom: 2rem;
+}

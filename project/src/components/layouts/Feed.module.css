@@ -1,0 +1,41 @@
+.wrp{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    
+}
+
+.fotoNome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    
+
+
+}
+.fotoFeed{
+    border-radius: 1rem;
+    background-color: var(--azulClaro);
+    width: 10rem;
+    height: 10rem;
+    
+
+}
+
+.dadosFeed{
+    border-radius: 1rem;
+    background-color: var(--azulBranco);
+    margin-top: auto;
+    width: 50rem;
+    height: 10rem;
+    padding: 2rem;
+}
+
+.botaoCurtir{
+    margin-top: 5rem;
+    margin-left: auto;
+    width: 10rem;
+    height: 10rem;
+}

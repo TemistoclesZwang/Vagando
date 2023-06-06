@@ -1,0 +1,46 @@
+
+.wrp {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    /* .pega 1 fração pra sidebar e o resto é do conteúdo */
+    min-height: 100vh;
+    /* .para preencher do topo ao fim da página a sidebar */
+    background: linear-gradient(to bottom, #0c286e, #153ea7);
+}
+
+
+
+nav{
+    font-size: 2rem;
+    list-style: none;
+    padding-right: 3rem;
+    margin-top: 15rem;
+    
+
+}
+
+.wrp a{
+    text-decoration: none !important;
+    color:var(--azulBranco) !important;
+    font-weight: 900;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap: 1rem;
+
+}
+
+li > :first-child {
+    font-size: 3rem;
+    color:var(--azulClaro);
+
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
