@@ -1,6 +1,11 @@
 import { Cadastro } from "../models/MCadastro";
 // import {sqlite3} from "sqlite3";
 import * as sqlite3 from 'sqlite3';
+// import bcrypt from 'bcrypt'
+import { hash } from 'bcrypt';
+import * as fs from 'fs';
+
+
 
 
 export class RCadastro {
@@ -14,6 +19,7 @@ export class RCadastro {
                 this.createTable();
             }
         });
+        
     }
 
     private createTable(): void {
@@ -62,6 +68,9 @@ export class RCadastro {
 
     // id , tipoUsuario ,tipoIdentificado, nome , dataNascimento , email , password
     async create(cadastro: Cadastro) {
+        const hashedPassword = await hash(cadastro.password, 5);
+        // o número representa a força do hash. +força = +lento
+
         try {
             const query = `INSERT INTO Cadastros (
                 tipoUsuario ,
@@ -78,15 +87,15 @@ export class RCadastro {
                         cadastro.nome ,
                         cadastro.dataNascimento ,
                         cadastro.email ,
-                        // ! o hash já tem que ser inserido aqui
-                    cadastro.password], function (err) {
+                        hashedPassword
+                        ], function (err) {
                     if (err) {
                         console.error('Erro ao inserir dados:', err);
                         reject(err);
                     } else {
                         console.log('Dados inseridos com sucesso!');
-                        // resolve();
-                        // !devolver novo usuario
+                        // return cadastro
+                        // !devolver dados cadastrados
                     }
                 });
             });
@@ -200,7 +209,6 @@ export class RCadastro {
         }
 
     }
-
 
 
 }
