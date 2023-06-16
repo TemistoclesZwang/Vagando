@@ -12,7 +12,7 @@ const clogin: CLogin = new CLogin();
 
 router.get("/cadastro",  ccadastro.getAllCadastros) // ! por que eu iria querer recuperar os dados do cadastro?
 router.post("/criar/cadastro",  ccadastro.createCadastro)
-router.get("/signin",  clogin.checkPassword) 
+router.post("/signin",  clogin.checkPassword) 
 
 
 export default router;

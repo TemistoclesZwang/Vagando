@@ -17,12 +17,17 @@ export default class CLogin {
         } = request.body;
         // . o compare pega a senha e gera um hash igual o do banco ?
         const checkEmailReturnPass: string = await login.verifyEmail(email)
-
-        if (checkEmailReturnPass) {
+        const isPasswordValid = await compare(password,checkEmailReturnPass);
+        
+        if (isPasswordValid) {
             // compara a senha com o hash do BD
-            const isPasswordValid = await compare(password,checkEmailReturnPass);
             return response.status(200).json({isPasswordValid});
     }
+    else{
+        return response.status(401).json({isPasswordValid});
+
+    }
+        
 }
 }
 
