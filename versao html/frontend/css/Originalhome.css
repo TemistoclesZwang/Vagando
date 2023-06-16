@@ -1,0 +1,120 @@
+/* home */
+
+.container {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* !aqui tbm entraria responsividade */
+    /* .pega 1 fração pra sidebar e o resto é do conteúdo */
+    min-height: 100vh;
+    /* .para preencher do topo ao fim da página a sidebar */
+    background: linear-gradient(to bottom, #0c286e, #153ea7);
+}
+
+
+
+nav{
+    font-size: 2rem;
+    list-style: none;
+    padding-right: 5rem;
+    padding-left: 5rem;
+    margin-top: 19rem;
+    
+
+}
+
+.container a{
+    text-decoration: none !important;
+    /* color:var(--azulBranco) !important; */
+    /* font-weight: 900; */
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap: 1rem;
+
+}
+
+li > :first-child {
+    font-size: 2rem;
+    color:var(--azulBranco);
+
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    /* !aqui vai entrar a */
+    gap: 3rem;
+}
+
+/* board */
+.board {
+    /* .conteúdo do quadro ao lado da sidebar */
+    /* height: 100%; */
+    /* .para o quadro preencher do topo ao fim da página */
+    background-color: #fbfaff;
+    border-top-left-radius: 4rem;
+    /* .para fazer o border radius */
+    padding: 4.8rem 3.2rem;
+}
+
+.perfil{
+    display: flex;
+    margin-left: 5rem;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.perfil > img {
+    width: 15rem;
+    height: 15rem;
+}
+
+/* feed */
+
+
+.wrpFeed{
+    margin-left: 7.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    
+}
+
+.fotoNome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+
+}
+.fotoFeed{
+    border-radius: 1rem;
+    background-color: var(--azulClaro);
+    width: 10rem;
+    height: 10rem;
+    
+
+}
+
+.dadosFeed{
+    border-radius: 1rem;
+    background-color: var(--azulBranco);
+    margin-top: auto;
+    width: 80rem;
+    height: 10rem;
+    padding: 2rem;
+}
+
+.botaoCurtir{
+    margin-top: 5rem;
+    /* margin-left: auto; */
+    width: 10rem;
+    /* height: 10rem; */
+}
