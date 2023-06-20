@@ -8,7 +8,8 @@ import cors = require('cors');
 // import router, {rotas} from './backend/routes/rotas';
 // import rotas = require('./backend/routes/rotas');
 import rotas from './backend/routes/rotas'
-
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./backend/doc/swagger.json";
 
 
 const port = 3005
@@ -17,6 +18,7 @@ const app = express()
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(rotas);
 

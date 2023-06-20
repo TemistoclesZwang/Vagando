@@ -1,0 +1,163 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Vagando api",
+        "description": "this a documentation of Vagando api",
+        "version": "1.0.0",
+        "contact": {
+            "email": "temis2st@gmail.com"
+        }
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Realizar login do usuário",
+                "description": "Endpoint para autenticar o usuário com email e senha.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados de login do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "senha": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso. O usuário foi autenticado."
+                    },
+                    "401": {
+                        "description": "Falha na autenticação. Email ou senha inválidos."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/formulario": {
+            "post": {
+                "tags": [
+                    "Formulário"
+                ],
+                "summary": "Preencher formulário",
+                "description": "Endpoint para preencher um formulário.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados do formulário preenchido pelo usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "senha": {
+                                    "type": "string"
+                                },
+                                "confirmar senha": {
+                                    "type": "string"
+                                },
+                                "matricula": {
+                                    "type": "string"
+                                },
+                                "nome": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso. O formulário foi preenchido com sucesso."
+                    },
+                    "400": {
+                        "description": "Requisição inválida. Os dados do formulário estão faltando ou são inválidos."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/formulario/dados": {
+            "post": {
+                "tags": [
+                    "Formulário"
+                ],
+                "summary": "Salvar dados do formulário",
+                "description": "Endpoint para salvar os dados de um formulário no banco de dados.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados do formulário a serem salvos",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "senha": {
+                                    "type": "string"
+                                },
+                                "confirmar senha": {
+                                    "type": "string"
+                                },
+                                "matricula": {
+                                    "type": "string"
+                                },
+                                "nome": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso. Os dados do formulário foram salvos com sucesso."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        }
+    }
+}
