@@ -3,3 +3,4 @@ node_modules
 transpilados
 .vscode
 data.db
+versao html/.env
