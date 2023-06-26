@@ -12,6 +12,7 @@ export class RCadastro {
     private db: sqlite3.Database;
 
     constructor() {
+        // !refatorar para detecta se db já existe
         this.db = new sqlite3.Database('data.db', (err) => {
             if (err) {
                 console.error('Erro ao abrir o banco de dados:', err);
@@ -19,7 +20,7 @@ export class RCadastro {
                 this.createTable();
             }
         });
-        
+
     }
 
     private createTable(): void {
@@ -33,18 +34,44 @@ export class RCadastro {
             dataNascimento TEXT,
             email TEXT,
             password TEXT,
+            tecnologias TEXT,
             date_time TEXT DEFAULT (datetime('now'))
             )
             `;
-            // FOREIGN KEY (id_post) REFERENCES Posts(id)
+        // FOREIGN KEY (id_post) REFERENCES Posts(id)
+        // ! se o banco de dados existe, não preciso fazer nada
         this.db.run(query, (err) => {
             if (err) {
                 console.error('Erro ao criar a tabela:', err);
             } else {
-                console.log('Tabela criada com sucesso!!!');
+                console.log('Tabela criada com sucesso!');
             }
         });
     }
+
+    async recuperar(pagina: number) {
+        try {
+
+        const registrosPorPagina = 2;
+        const offset = (pagina - 1) * registrosPorPagina;
+
+        const query = `SELECT * FROM Cadastros LIMIT ${registrosPorPagina} OFFSET ${offset}`;
+
+        this.db.all(query, (err, rows) => {
+            if (err) {
+                console.error('Erro ao recuperar registros:', err);
+            } else {
+                console.log('Registros recuperados:', rows);
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao obter cadastro:', error);
+        throw error;
+    }
+    // Exemplo de uso da função recuperar
+    // recuperar(1); // Recupera os registros de 1 a 10
+    // recuperar(2); // Recupera os registros de 11 a 20
+}
 
 
     async retrieveAll() {
@@ -78,17 +105,19 @@ export class RCadastro {
                 nome ,
                 dataNascimento ,
                 email ,
-                password ) VALUES (?, ?, ?, ?, ?, ?)`;
-                return new Promise((resolve, reject) => {
-                    
-                    this.db.run(query, [
-                        cadastro.tipoUsuario ,
-                        cadastro.tipoIdentificador,
-                        cadastro.nome ,
-                        cadastro.dataNascimento ,
-                        cadastro.email ,
-                        hashedPassword
-                        ], function (err) {
+                password,
+                tecnologias) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+            return new Promise((resolve, reject) => {
+
+                this.db.run(query, [
+                    cadastro.tipoUsuario,
+                    cadastro.tipoIdentificador,
+                    cadastro.nome,
+                    cadastro.dataNascimento,
+                    cadastro.email,
+                    hashedPassword,
+                    cadastro.tecnologias,
+                ], function (err) {
                     if (err) {
                         console.error('Erro ao inserir dados:', err);
                         reject(err);
@@ -129,56 +158,50 @@ export class RCadastro {
             throw error;
         }
     };
-// !refatorar
-    async update(id: string, novoTitle: string, novoText: string, novoLike: number) {
+
+    async update(id: string, novaTecnologia: string) {
         //para verificar se o usuário quer modificar text, likes ou os dois
         let updateQuery = 'UPDATE posts SET';
         const paramsUpdate: string[] = [];
+        // ! testar se está substituindo tudo que está no banco pelas novas tecnologias
+        // !, não deveria estar em uma outra classe? na classe de configuração no item de atualização dos dados
+        if (novaTecnologia !== '') {
+            updateQuery += ' tecnologias = ?,';
+            paramsUpdate.push(novaTecnologia);
 
-        if (novoText !== '') {
-            updateQuery += ' text = ?,';
-            paramsUpdate.push(novoText);
-        }
-        if (novoTitle !== '') {
-            updateQuery += ' title = ?,';
-            paramsUpdate.push(novoText);
-        }
-        if (novoLike !== undefined) {
-            updateQuery += ' likes = ?,';
-            paramsUpdate.push(novoLike.toString());
-        }
 
-        updateQuery = updateQuery.slice(0, -1);
-        //pra tirar a vírgula da query
+            updateQuery = updateQuery.slice(0, -1);
+            //pra tirar a vírgula da query
 
-        updateQuery += ' WHERE id = ?';
-        paramsUpdate.push(id);
+            updateQuery += ' WHERE id = ?';
+            paramsUpdate.push(id);
 
-        try {
-            const query: string = `SELECT * FROM posts WHERE id = ?`;
-            return new Promise((resolve, reject) => {
-                this.db.get(query, [id], (err, row) => {
-                    if (err) {
-                        console.error('Erro ao obter post:', err);
-                        reject(err)
-                        return null
-                    } else {
-                        this.db.run(updateQuery, paramsUpdate, (err) => {
-                            if (err) {
-                                console.error('Erro ao atualizar post:', err);
-                            } else {
-                                // só precisa de um print não precisa resolve
-                                return (console.log('post atualizado com sucesso!'));
-                            }
-                        });
-                    }
+            try {
+                const query: string = `SELECT * FROM Cadastros WHERE id = ?`;
+                return new Promise((resolve, reject) => {
+                    this.db.get(query, [id], (err, row) => {
+                        if (err) {
+                            console.error('Erro ao obter post:', err);
+                            reject(err)
+                            return null
+                        } else {
+                            this.db.run(updateQuery, paramsUpdate, (err) => {
+                                if (err) {
+                                    console.error('Erro ao atualizar post:', err);
+                                } else {
+                                    // só precisa de um print não precisa resolve
+                                    return (console.log('post atualizado com sucesso!'));
+                                }
+                            });
+                        }
+                    });
                 });
-            });
-        } catch (error) {
-            console.error('Erro ao obter posts:', error);
-            throw error;
-        }
+            } catch (error) {
+                console.error('Erro ao obter posts:', error);
+                throw error;
+            }
 
+        }
     }
 
 

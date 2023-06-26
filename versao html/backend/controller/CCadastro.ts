@@ -1,7 +1,7 @@
 import { Cadastro } from "../models/MCadastro";
 import { RCadastro } from "../repository/RCadastro";
 import { Request, Response } from "express";
-import { Router } from 'express';
+// import { Router } from 'express';
 
 
 const cadastro: RCadastro = new RCadastro();
@@ -25,7 +25,8 @@ export default class CCadastro {
             nome,
             dataNascimento,
             email,
-            password
+            password,
+            tecnologias
         } = request.body;
 
         const novoCadastro: Cadastro = new Cadastro(
@@ -34,13 +35,15 @@ export default class CCadastro {
             nome,
             dataNascimento,
             email,
-            password
+            password,
+            tecnologias
         );
 
         cadastro.create(novoCadastro)
         return response.status(200).json({});
 
     }
+
 }
 
 

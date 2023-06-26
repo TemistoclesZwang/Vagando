@@ -6,4 +6,5 @@ export interface ICadastro {
     dataNascimento: string;
     email: string;
     password: string;
+    tecnologias: string;
 }

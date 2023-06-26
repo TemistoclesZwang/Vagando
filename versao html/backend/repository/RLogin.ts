@@ -11,18 +11,20 @@ export class RLogin {
         const databasePath = '/home/temistocles/IFPI/Periodos/3 periodo/Proj 1/git/Vagando/versao html/data.db';
         if (!fs.existsSync(databasePath)) {
             console.error('Arquivo do banco de dados não encontrado.');
-            // ! pq tá entrando aqui ?
             process.exit(1);
-        }
-
+        }else{
         this.db = new sqlite3.Database(databasePath);
         try {
             const query: string = `SELECT * FROM Cadastros`;
             new Promise((resolve, reject) => {
                 this.db.all(query, (err, rows) => {
                     if (err) {
-                        console.error('!Erro ao obter cadastro:', err);
-                        reject(err);
+                        console.log('Nenhuma tabela de cadastros encontrada \
+                        para fazer login:');
+                        // !refatorar
+                        // console.error('Nenhuma tabela de cadastros encontrada \
+                            // para fazer login:', err);
+                        // reject(err);
                     } else {
                         resolve(rows);
                     }
@@ -32,6 +34,7 @@ export class RLogin {
             console.error('Erro ao obter cadastro:', error);
             throw error;
         }
+    }
     }
     async signin(email: string,password: string): Promise < any > {
 
