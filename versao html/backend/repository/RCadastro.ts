@@ -43,9 +43,7 @@ export class RCadastro {
         this.db.run(query, (err) => {
             if (err) {
                 console.error('Erro ao criar a tabela:', err);
-            } else {
-                console.log('Tabela criada com sucesso!');
-            }
+            } 
         });
     }
 
