@@ -7,67 +7,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="../javascript/test.js"></script>
+  <script src="../javascript/login.js"></script>
+  <!-- <link rel="stylesheet" href="../global.css"> -->
+  <link rel="stylesheet" href="../css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nome+da+Fonte&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background: linear-gradient(to bottom, #4781ff, #193270);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .background-overlay {
-      position: absolute;
-      top: 0;
-      left: 0 auto;
-      width: 100%;
-      height: 100%;
-      background-image: url('../assets/loginPeople.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      z-index: -1;
-    }
-
-    .login-form {
-      /* width: 400px; */
-      margin-top: 200px;
-      height: 450px;
-      padding-top: 120px;
-      padding-left: 30px;
-      padding-right: 30px;
-      /* padding: 10px 10px 20p ; */
-      background: rgba(255, 255, 255, 0.35);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(13.5px);
-      -webkit-backdrop-filter: blur(13.5px);
-      border-radius: 19px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-  </style>
 </head>
 
 <body>
+  <div class="text-container">
+    <p class="text">Sua vaga está aqui</p>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
         <div class="login-form">
-          <h2 class="text-center mb-4">Login</h2>
+          <h2 class="text-center mb-4">Logo</h2>
           <form>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email">
+              <label for="email" class="fs-5">Email</label>
+              <input type="email" class="form-control fs-5" id="email" placeholder="Enter email">
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter password">
+              <label for="password" class="fs-5">Password</label>
+              <input type="password" class="form-control fs-5" id="password" placeholder="Enter password">
             </div>
-            <button type="submit" class="btn btn-primary btn-block" id="login">Login</button>
+            <button type="submit" class="btn btn-primary btn-block fs-5" id="login">Login</button>
+            <p class="text-center fs-6" id="cadastro">Não tem uma conta? <a href="caminho-do-cadastro" class="text-white">Cadastre-se</a></p>
           </form>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <div class="background-overlay"></div>

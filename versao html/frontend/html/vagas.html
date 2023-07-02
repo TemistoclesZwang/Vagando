@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../css/vagas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<script src="../javascript/vagas.js"></script>
+<!-- <script src="../javascript/infosUsuario.js"></script> -->
+<!-- <script src="../javascript/curtir.js"></script> -->
+<title>Document</title>
+
+</head>
+
+<body onload="renderInfosVagas()">
+
+    <div class="container">
+        <aside>
+            <nav>
+                <div class="navbar">
+                    <div class="logoNav">
+                        <h1>Logo</h1>
+                    </div>
+                    <div class="itens">
+                        <i class="fas fa-home fa-lg"></i><a href="./homeEmpresa.html">Home</a>
+                    </div>
+                    <div class="itens">
+                        <i class="fas fa-paperclip fa-lg"></i><a href="vagas.html">vagas</a>
+                    </div>
+                    <div class="itens">
+                        <i class="fas fa-filter fa-lg"></i><a href="#">Filtrar</a>
+                    </div>
+            </nav>
+        </aside>
+        <div class="board">
+            <div class="cont">
+                <div class="barra-busca">
+                    <input type="text" class="search-bar" placeholder="Buscar">
+                </div>
+                <div class="itens">
+                    <div class="end-div"><i class="fas fa-bell fa-lg"></i>notificações</div>
+                </div>
+            </div>
+
+            <div class="perfil" id="id-perfil">
+                <img src="../assets/fotoPerfil.png" alt="foto de perfil">
+                <h1 id="nome-usuario"></h1>
+                <div class="novaVaga"></div>
+            </div>
+            <div class="containerFeed">
+                <div class="fotoNome">
+                    <div class="fotoFeed">
+                    </div>
+                </div>
+                <div class="dadosCard" id="id-card">
+                    <form>
+                        <h3>Crie uma nova vaga</h3>
+                        <label for="vaga">Nome da vaga:</label>
+                        <input type="text" id="vaga" required>
+                        <label for="salario">Salário:</label>
+                        <input type="text" id="salario" required>
+                    </form>
+                    <button id="nova-vaga">nova vaga</button>
+                    <section id="id-feed">
+                        <template id="card-template">
+                            <article class="card" id="id-article">
+                                <div class="vagas" id="id-vagas">
+                                    <div class="vaga-antiga" id="id-vaga-antiga">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                                            dolores voluptas velit, quod nemo totam minus! Esse commodi ad hic,
+                                            suscipit soluta excepturi exercitationem ab sed sunt optio ex consequuntur.
+                                        </p>
+                                        <p>data:</p>
+                                        <div class="data" id="id-data">
+                                            data
+                                        </div>
+                                        <p>número de candidatos:</p>
+
+                                        <div id="id-numero-candidatos">número de candidatos</div>
+                                    </div>
+                                </div>
+                            </article>
+                    </section>
+
+                </div>
+            </div>
+            <footer>
+
+            </footer>
+
+</body>
+
+</html>

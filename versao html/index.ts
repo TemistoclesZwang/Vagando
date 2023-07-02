@@ -11,8 +11,6 @@ import rotas from './backend/routes/rotas'
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "./backend/doc/swagger.json";
 import dotenv from 'dotenv';
-import MidLogin from './backend/middleware/MidLogin';
-import MidPaginasFeed from './backend/middleware/MidPaginasFeed';
 
 
 dotenv.config();
@@ -28,9 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(rotas);
-
-app.use(MidLogin);
-app.use(MidPaginasFeed);
 
 
 app.listen(port, function () {

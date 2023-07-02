@@ -20,8 +20,15 @@ body, button, input, textarea{
     font-family: 'Open Sans', sans-serif;
 }
 
-button{
-    padding: .3rem;
+
+button {
+    display: inline-block;
+    padding: .5rem .9rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
 }
 
 

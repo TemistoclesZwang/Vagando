@@ -1,6 +1,9 @@
 // import { Cadastro } from "../models/MCadastro";
-import { RCadastro } from "../repository/RCadastro";
+import { RRetrieves } from "../repository/RRetrievesCadastro";
 import { Request, Response } from "express";
+import { tokenContext } from '../controller/CLogin';
+
+
 // import { Router } from 'express';
 // ; injeção de dependencia, essa classe só usa os dados que já existem no cadastro 
 
@@ -10,13 +13,13 @@ import { Request, Response } from "express";
 
 
 export default class CFeed {
-    private repositoryCadastro: RCadastro = new RCadastro();
+    private repositoryRetrieves: RRetrieves = new RRetrieves();
     
     retrieveCardData = async (request: Request, response: Response) => {
-        const { id } = request.body;
-
+        const { id } = tokenContext
+        
         if (id) {
-            const dadosRetornados = await this.repositoryCadastro.retrieve(id)
+            const dadosRetornados = await this.repositoryRetrieves.retrieve(id)
             return response.status(200).json({ dadosRetornados });
         }
         else {

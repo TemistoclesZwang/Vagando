@@ -1,13 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-
-declare global {
-    namespace Express {
-        interface Request {
-            token?: Object;
-        }
-    }
-}
+import * as jwt from 'jsonwebtoken';
+import { tokenContext } from '../controller/CLogin';
 
 
 const secretKey: string = 'teste'
@@ -15,7 +8,8 @@ const secretKey: string = 'teste'
 // .essa senha precisa ser a mesma usada no controller que criou o token
 
 const MidLogin = (request: Request, response: Response, next: NextFunction) => {
-    const token = request.headers.authorization?.split(' ')[1];
+    // const token = request.headers.authorization?.split(' ')[1];
+    const token = tokenContext.token;
     // console.log('token',request.headers.authorization);
     
     // Obtenha o token do header Authorization
@@ -30,9 +24,10 @@ const MidLogin = (request: Request, response: Response, next: NextFunction) => {
         }
 
         // O token é válido, você pode fazer qualquer processamento adicional com o `decoded`
+        
 
-        // Você pode até adicionar o objeto `decoded` à requisição para uso posterior em outros middlewares ou controladores
-        response.locals.token = decoded;
+        // console.log(request);
+        
 
         
         
@@ -41,8 +36,7 @@ const MidLogin = (request: Request, response: Response, next: NextFunction) => {
     });
 };
 
-//! exemplo de uso de outro middleware sem ter que validar de novo o token do usuario
-// app.get('/rota-protegida', MidLogin, anotherMiddleware, (req, res) => {
-//   });
+
+
 
 export default MidLogin;

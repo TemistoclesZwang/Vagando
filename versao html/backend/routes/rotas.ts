@@ -1,14 +1,12 @@
+import { Router } from 'express';
 import CCadastro from "../controller/CCadastro";
 import CFeed from "../controller/CFeed";
 import CRetrieves from "../controller/CRetrieves";
-
 import CLogin from "../controller/CLogin";
-// import { Cadastro } from "../models/MCadastro";
-import { Router, Request, Response } from 'express';
-import MidLogin from '../middleware/MidLogin';
-import MidPaginasFeed from '../middleware/MidPaginasFeed';
+import CVagas from "../controller/CVagas";
+import MidLogin from '../middleware/MidFeed';
+import midAuth from '../middleware/MidAuth';
 
-// export const rotas: Router = Router()
 
 
 const router = Router();
@@ -16,14 +14,18 @@ const ccadastro: CCadastro = new CCadastro();
 const clogin: CLogin = new CLogin();
 const cfeed: CFeed = new CFeed();
 const cretrieves: CRetrieves = new CRetrieves();
+const cvagas: CVagas = new CVagas();
 
-router.get("/cadastro",  ccadastro.getAllCadastros) // ! por que eu iria querer recuperar os dados do cadastro?
+router.get("/cadastro",  ccadastro.getAllCadastros) //!não implementado
 router.post("/criar/cadastro",  ccadastro.createCadastro)
-router.post("/signin",  clogin.checkPassword) 
-router.post("/feed",MidLogin,  cfeed.retrieveCardData) 
+router.post("/signin",  clogin.checkPassGenToken) 
+router.get("/feed",MidLogin,  cfeed.retrieveCardData) 
 // .o middleware é executado antes de recuperar os dados do card
-router.post("/feed/pagina",MidLogin, cretrieves.retrievePages) 
+router.put("/feed/pagina",midAuth, cretrieves.retrievePages) 
 // .o mid paginas recebe o token do mid login para não precisar autenticar de novo
+router.post("/vagas",midAuth, cvagas.createVaga) 
+router.get("/vagas/test",midAuth, cvagas.getAllVagas) 
+router.post("/vagas/historico",midAuth, cvagas.getVagas) 
 
 
 

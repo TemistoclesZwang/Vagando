@@ -54,7 +54,7 @@
                 }
             }
         },
-        "/formulario": {
+        "/cadastro/aluno": {
             "post": {
                 "tags": [
                     "Formulário"
@@ -90,6 +90,9 @@
                                 },
                                 "nome": {
                                     "type": "string"
+                                },
+                                "nascimento": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -108,13 +111,13 @@
                 }
             }
         },
-        "/formulario/dados": {
+        "/cadastro/empresa": {
             "post": {
                 "tags": [
                     "Formulário"
                 ],
-                "summary": "Salvar dados do formulário",
-                "description": "Endpoint para salvar os dados de um formulário no banco de dados.",
+                "summary": "Preencher formulário",
+                "description": "Endpoint para preencher um formulário de cadastro para empresa.",
                 "consumes": [
                     "application/json"
                 ],
@@ -125,7 +128,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Dados do formulário a serem salvos",
+                        "description": "Dados do formulário preenchido pelo usuário",
                         "required": true,
                         "schema": {
                             "type": "object",
@@ -139,7 +142,7 @@
                                 "confirmar senha": {
                                     "type": "string"
                                 },
-                                "matricula": {
+                                "cnpj": {
                                     "type": "string"
                                 },
                                 "nome": {
@@ -151,7 +154,171 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Sucesso. Os dados do formulário foram salvos com sucesso."
+                        "description": "Sucesso. O formulário foi preenchido com sucesso."
+                    },
+                    "400": {
+                        "description": "Requisição inválida. Os dados do formulário estão faltando ou são inválidos."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/feed/pagina": {
+            "get": {
+                "tags": [
+                    "Feed"
+                ],
+                "summary": "Recuperar dados do card do feed",
+                "description": "Endpoint para recuperar os dados do card no feed",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "numeroDaPagina",
+                        "in": "query",
+                        "description": "Número da página",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso. Os dados do card do feed foram recuperados com sucesso."
+                    },
+                    "401": {
+                        "description": "Não autorizado. O usuário não está logado."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/vagas": {
+            "post": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Criar nova vaga",
+                "description": "Endpoint para criar uma nova vaga.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados da vaga a ser criada",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "idDaEmpresa": {
+                                    "type": "string"
+                                },
+                                "nomeEmpresa": {
+                                    "type": "string"
+                                },
+                                "tituloVaga": {
+                                    "type": "string"
+                                },
+                                "salario": {
+                                    "type": "number"
+                                },
+                                "date_time": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso. A vaga foi criada com sucesso."
+                    },
+                    "400": {
+                        "description": "Requisição inválida. Os dados da vaga estão faltando ou são inválidos."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/vagas/historico": {
+            "get": {
+                "tags": [
+                    "Vagas"
+                ],
+                "summary": "Obter histórico de vagas",
+                "description": "Endpoint para obter o histórico de vagas criadas pela empresa.",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso. Retorna o histórico de vagas.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "description": "ID da vaga"
+                                            },
+                                            "idDaEmpresa": {
+                                                "type": "string",
+                                                "description": "ID da empresa responsável pela vaga"
+                                            },
+                                            "nomeEmpresa": {
+                                                "type": "string",
+                                                "description": "Nome da empresa responsável pela vaga"
+                                            },
+                                            "tituloVaga": {
+                                                "type": "string",
+                                                "description": "Título da vaga"
+                                            },
+                                            "salario": {
+                                                "type": "number",
+                                                "description": "Salário da vaga"
+                                            },
+                                            "date_time": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "description": "Data e hora da criação da vaga"
+                                            }
+                                        },
+                                        "required": [
+                                            "id",
+                                            "idDaEmpresa",
+                                            "nomeEmpresa",
+                                            "tituloVaga",
+                                            "salario",
+                                            "date_time"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado. O token de autenticação é inválido ou expirou."
                     },
                     "500": {
                         "description": "Erro interno do servidor."

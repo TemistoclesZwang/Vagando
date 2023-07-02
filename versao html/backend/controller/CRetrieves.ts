@@ -1,7 +1,8 @@
 // import { Cadastro } from "../models/MCadastro";
-import { RRetrieves } from "../repository/RRetrieves";
+import { RRetrieves } from "../repository/RRetrievesCadastro";
 import { Request, Response } from "express";
 // import { Router } from 'express';
+import { tokenContext } from '../controller/CLogin';
 
 
 
@@ -10,12 +11,15 @@ export default class CRetrieves {
     private repositoryRetrieves: RRetrieves = new RRetrieves();
     
     retrievePages = async (request: Request, response: Response) => {
+        const { id } = tokenContext
         const { numeroDaPagina } = request.body;
 
-        if (numeroDaPagina) {
-            const cardsRetornados = await this.repositoryRetrieves.retrieveOnDemand(numeroDaPagina)
-            console.log(cardsRetornados);
-            
+        if (numeroDaPagina && id) {
+            const tipoUsuario = await this.repositoryRetrieves.retrieve(id)
+
+            const cardsRetornados = await  this.repositoryRetrieves.retrieveOnDemand(numeroDaPagina,tipoUsuario['tipoUsuario'])
+            // console.log(cardsRetornados);
+
             return response.status(200).json({ cardsRetornados });
         }
         else {
@@ -23,4 +27,6 @@ export default class CRetrieves {
 
         }
     }
+
+
 }

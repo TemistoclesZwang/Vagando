@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<script src="../javascript/cards.js"></script>
+<!-- <script src="../javascript/infosUsuario.js"></script> -->
+<!-- <script src="../javascript/curtir.js"></script> -->
+<title>Document</title>
+
+</head>
+
+<body onload="renderInfosCards()">
+    <div class="container">
+        <aside>
+            <nav>
+                <div class="navbar">
+                    <div class="logoNav">
+                        <h1>Logo</h1>
+                    </div>
+                    <div class="itens">
+                        <i class="fas fa-home fa-lg"></i><a href="homeEstudante.html">Home</a>
+                    </div>
+                    <div class="itens">
+                        <i class="fas fa-paperclip fa-lg"></i><a href="#">vagas</a>
+                    </div>
+                    <div class="itens">
+                        <i class="fas fa-filter fa-lg"></i><a href="#">Filtrar</a>
+                    </div>
+            </nav>
+        </aside>
+        <div class="board">
+                <div class="cont">
+                    <div class="barra-busca">
+                        <input type="text" class="search-bar" placeholder="Buscar">
+                    </div>
+                    <div class="notificacao"><i class="fas fa-bell fa-lg"></i>notificações</div>
+            </div>
+
+            <div class="perfil" id="id-perfil">
+                <img src="../assets/fotoPerfil.png" alt="foto de perfil">
+                <h1 id="nome-usuario"></h1>
+            </div>
+            <section id="id-feed">
+                <template id="card-template">
+                    <article class="card" id="id-article">
+                        <div class="containerFeed">
+                            <div class="fotoNome">
+                                <h3>Fulano 1</h3>
+                                <div class="fotoFeed">
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dadosCard" id="id-card">
+                                <p>Dados do Fulano 1</p>
+                                <div class="botaoCurtir">
+                                    <button class='button' id="btn-curtir">Curtir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+            </section>
+        </div>
+        <footer>
+
+        </footer>
+
+</body>
+
+</html>

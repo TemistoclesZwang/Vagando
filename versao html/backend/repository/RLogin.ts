@@ -19,8 +19,7 @@ export class RLogin {
             new Promise((resolve, reject) => {
                 this.db.all(query, (err, rows) => {
                     if (err) {
-                        console.log('Nenhuma tabela de cadastros encontrada \
-                        para fazer login:');
+                        console.log('Nenhuma tabela de cadastros encontrada para fazer login:');
                         // !refatorar
                         // console.error('Nenhuma tabela de cadastros encontrada \
                             // para fazer login:', err);
@@ -72,6 +71,27 @@ export class RLogin {
                     // return null
                 } else {
                     resolve(row.password);
+                    // return row;
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Erro ao obter email:', error);
+        throw error;
+    }
+};
+
+async returnIdForToken(email: string): Promise < any > {
+    try {
+        const query: string = `SELECT * FROM Cadastros WHERE email = ?`;
+        return new Promise((resolve, reject) => {
+            this.db.get(query, [email], (err, row: any) => {
+                if (err) {
+                    console.error('Email não existe:', err);
+                    reject(err)
+                    // return null
+                } else {
+                    resolve(row.id);
                     // return row;
                 }
             });
