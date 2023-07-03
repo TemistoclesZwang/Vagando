@@ -3,10 +3,16 @@
     flex-wrap: wrap;
     background: linear-gradient(to bottom, #0c286e, #2864fc);
     flex-direction: row;
-    /* align-items: center; */
-    /* max-width: 50vw; */
 
 }
+
+
+.logo {
+    width: 15rem;
+    height: auto;
+  }
+  
+
 
 
 .cont {
@@ -32,12 +38,9 @@
   }
 
 .barra-busca {
-    /* background-color: rgb(255, 255, 255); */
     padding: 10px;
     border-radius: 2rem;
     padding-right: 3rem;
-    /* background-color: rgba(255, 255, 255, 0.7); */
-    /* Outras propriedades de estilo */
       
 }
 
@@ -59,37 +62,29 @@
     align-items: center;
     flex-direction: column;
 
-    /* padding-left: 20rem; */
-    /* margin-left: 5rem; */
     flex: 800px;
     height: 100vh;
 
-    /* .conteúdo do quadro ao lado da sidebar */
-    /* height: 100%; */
-    /* .para o quadro preencher do topo ao fim da página */
-    background-color: #676279;
-    /* background-color: #fbfaff; */
+    /* background-color: #676279; */
+    background-color: #fbfaff;
     border-top-left-radius: 5rem;
-    /* .para fazer o border radius */
-    /* padding: 15.8rem 0.2rem; */
     padding-top: .5rem;
 
 }
 
 
 .logoNav {
-    font-size: 5rem
+    font-size: 5rem;
 }
 
 .navbar {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* align-items: center; */
     gap: 2rem;
     font-size: 2rem;
     list-style: none;
-    padding-top: 8rem;
+    padding-top: 2rem;
     padding-right: 2rem;
     padding-left: 2rem;
     padding-bottom: 2rem;
@@ -103,7 +98,6 @@
 .itens i {
     color: #fbfaff;
     margin-right: 1.5rem;
-    /* Ajuste o valor conforme necessário */
 }
 
 .notificacao i {
@@ -114,14 +108,11 @@
 @media screen and (max-width: 1024px) {
 
     .navbar {
-        /* max-height: 1vh; */
         max-width: 100vw;
         justify-content: center;
         gap: 3rem;
         flex-direction: row;
         align-items: center;
-        /* padding: 0 0 5rem 15rem; */
-        /* padding-left: 20rem; */
         padding-right: 5rem;
         margin-top: 22rem;
         padding-top: 1rem;
@@ -159,10 +150,7 @@
 .containerFeed {
     width: 50vw;
     display: flex;
-    /* flex-wrap: wrap; */
-    /* margin-left: 7.5rem; */
     align-items: center;
-    /* justify-content: center; */
     flex-direction: row;
     gap: 1rem;
     margin-right: 5rem;
@@ -188,22 +176,15 @@
 }
 
 .dadosCard {
-    /* margin-right: 4rem; */
     border-radius: 1rem;
     background-color: var(--azulBranco);
     margin-top: auto;
-    /* width: 50rem; */
-    /* height: 10rem; */
     max-width: 90rem;
-    /* Define uma largura máxima para a div */
     width: 100%;
     padding: 2rem;
 }
 
 .botaoCurtir {
 
-    /* margin-top: 5rem; */
-    /* margin-left: auto; */
     width: 10rem;
-    /* height: 10rem; */
 }

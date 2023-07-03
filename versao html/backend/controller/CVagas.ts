@@ -2,7 +2,6 @@ import { Vagas } from "../models/MVagas";
 import { RVagas } from "../repository/RVagas";
 import { RCadastro } from "../repository/RCadastro";
 import { Request, Response, NextFunction } from "express";
-// import { Router } from 'express';
 import { tokenIdContext } from '../middleware/MidAuth';
 
 
@@ -12,17 +11,16 @@ const dadosCadastro: RCadastro = new RCadastro();
 export default class CVagas {
 
     getAllVagas = async (request: Request, response: Response) => {
-        // request.setTimeout(5000);
         const dados = await vaga.retrieveAllVagas();
         return response.json(await dados);
     }
 
-    getVagas = async (request: Request, response: Response) => {
+    getVagasOnDemand = async (request: Request, response: Response) => {
         const { numeroDaPagina } = request.body;
-        
-        
         if (tokenIdContext.id && numeroDaPagina) {
             const idDaEmpresaNoBD = tokenIdContext.id;
+            console.log('Id da empresa no banco',idDaEmpresaNoBD);
+            
             const dados = await vaga.retrieveVagasOnDemand(numeroDaPagina, idDaEmpresaNoBD);
             return response.json(await dados);
         } else {

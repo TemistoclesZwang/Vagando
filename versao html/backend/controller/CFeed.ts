@@ -1,15 +1,6 @@
-// import { Cadastro } from "../models/MCadastro";
 import { RRetrieves } from "../repository/RRetrievesCadastro";
 import { Request, Response } from "express";
 import { tokenContext } from '../controller/CLogin';
-
-
-// import { Router } from 'express';
-// ; injeção de dependencia, essa classe só usa os dados que já existem no cadastro 
-
-// . pegar get all do CCadastro
-// . pegar get Id do RCadastro
-
 
 
 export default class CFeed {

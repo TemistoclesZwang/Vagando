@@ -1,9 +1,6 @@
 import { Cadastro } from "../models/MCadastro";
-// import {sqlite3} from "sqlite3";
 import * as sqlite3 from 'sqlite3';
-// import bcrypt from 'bcrypt'
 import { hash } from 'bcrypt';
-import * as fs from 'fs';
 
 
 
@@ -12,7 +9,6 @@ export class RCadastro {
     private db: sqlite3.Database;
 
     constructor() {
-        // !refatorar para detecta se db já existe
         this.db = new sqlite3.Database('data.db', (err) => {
             if (err) {
                 console.error('Erro ao abrir o banco de dados:', err);
@@ -38,8 +34,6 @@ export class RCadastro {
             date_time TEXT DEFAULT (datetime('now'))
             )
             `;
-        // FOREIGN KEY (id_post) REFERENCES Posts(id)
-        // ! se o banco de dados existe, não preciso fazer nada
         this.db.run(query, (err) => {
             if (err) {
                 console.error('Erro ao criar a tabela:', err);
@@ -66,9 +60,6 @@ export class RCadastro {
         console.error('Erro ao obter cadastro:', error);
         throw error;
     }
-    // Exemplo de uso da função recuperar
-    // recuperar(1); // Recupera os registros de 1 a 10
-    // recuperar(2); // Recupera os registros de 11 a 20
 }
 
 
@@ -91,10 +82,8 @@ export class RCadastro {
         }
     }
 
-    // id , tipoUsuario ,tipoIdentificado, nome , dataNascimento , email , password
     async create(cadastro: Cadastro) {
         const hashedPassword = await hash(cadastro.password, 5);
-        // o número representa a força do hash. +força = +lento
 
         try {
             const query = `INSERT INTO Cadastros (
@@ -121,8 +110,6 @@ export class RCadastro {
                         reject(err);
                     } else {
                         console.log('Dados inseridos com sucesso!');
-                        // return cadastro
-                        // !devolver dados cadastrados
                     }
                 });
             });
@@ -158,11 +145,8 @@ export class RCadastro {
     };
 
     async update(id: string, novaTecnologia: string) {
-        //para verificar se o usuário quer modificar text, likes ou os dois
         let updateQuery = 'UPDATE posts SET';
         const paramsUpdate: string[] = [];
-        // ! testar se está substituindo tudo que está no banco pelas novas tecnologias
-        // !, não deveria estar em uma outra classe? na classe de configuração no item de atualização dos dados
         if (novaTecnologia !== '') {
             updateQuery += ' tecnologias = ?,';
             paramsUpdate.push(novaTecnologia);
@@ -187,7 +171,6 @@ export class RCadastro {
                                 if (err) {
                                     console.error('Erro ao atualizar post:', err);
                                 } else {
-                                    // só precisa de um print não precisa resolve
                                     return (console.log('post atualizado com sucesso!'));
                                 }
                             });

@@ -1,15 +1,12 @@
-// import { Login } from "../models/MLogin";
 import { RLogin } from "../repository/RLogin";
 import { Request, Response } from "express";
-// import { Router } from 'express';
 import { compare } from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
-
-// import dotenv from 'dotenv';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 
 
 dotenv.config();
+const secretKey = process.env.JWT_KEY || '';
 
 export const tokenContext = {
     token: undefined as string | undefined,
@@ -21,17 +18,10 @@ const login: RLogin = new RLogin();
 
 export default class CLogin {
     generateToken = (payload: object): string => {
-        // const secretKey = process.env.JWT_KEY
-        // !usar variável de ambiente
-        const secretKey: string = 'teste'
-        // Defina a chave secreta para assinar o token
-
-        // Defina as opções do token, como o tempo de expiração
         const options:Object = {
-            expiresIn: '15h' // Token expira em 1 hora
+            expiresIn: '15h'
         };
 
-        // Gere o token JWT com o payload, a chave secreta e as opções
         const token = jwt.sign(payload, secretKey, options);
         
         return token;
@@ -43,7 +33,7 @@ export default class CLogin {
             email,
             password
         } = request.body;
-        // . o compare pega a senha e gera um hash igual o do banco ?
+        // . o compare pega a senha e gera um hash igual o do banco 
         const checkEmailReturnPass: string = await login.verifyEmail(email)
         const checkIdForEmail: string = await login.returnIdForToken(email)
         const isPasswordValid = await compare(password, checkEmailReturnPass);

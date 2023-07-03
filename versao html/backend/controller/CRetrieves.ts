@@ -1,7 +1,5 @@
-// import { Cadastro } from "../models/MCadastro";
 import { RRetrieves } from "../repository/RRetrievesCadastro";
 import { Request, Response } from "express";
-// import { Router } from 'express';
 import { tokenContext } from '../controller/CLogin';
 
 
@@ -18,7 +16,6 @@ export default class CRetrieves {
             const tipoUsuario = await this.repositoryRetrieves.retrieve(id)
 
             const cardsRetornados = await  this.repositoryRetrieves.retrieveOnDemand(numeroDaPagina,tipoUsuario['tipoUsuario'])
-            // console.log(cardsRetornados);
 
             return response.status(200).json({ cardsRetornados });
         }

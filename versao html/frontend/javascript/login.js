@@ -25,7 +25,6 @@ async function accessFeed() {
             'Content-Type': 'application/json'
 
         },
-        // body: JSON.stringify(login)
     };
 
     const response = await fetch('http://localhost:3005/feed', config);
@@ -33,7 +32,7 @@ async function accessFeed() {
 
 }
 
-function redirecionarTipoUsuario(){
+function redirecionarTipoUsuario() {
     accessFeed().then(result => {
         const tipoUsuario = result['dadosRetornados']['tipoUsuario']
         if (tipoUsuario === 'aluno') {
@@ -56,27 +55,34 @@ window.onload = () => {
     })
 
 
-    const btnSubmit = document.getElementById('login')
+    const btnSubmit = document.getElementById('login');
+
     btnSubmit.addEventListener("click", async (event) => {
         event.preventDefault();
-        const retornoDoPassWord = sendPassword()
+
+        const retornoDoPassWord = sendPassword();
 
         retornoDoPassWord.then(response => {
             if (response.status === 200) {
-                accessFeed().then(result => {
-                    // Manipula a resposta da requisição
-                    redirecionarTipoUsuario() //! pegar info do endpoint
-
-                })
+                accessFeed()
+                    .then(result => {
+                        redirecionarTipoUsuario(); 
+                    })
                     .catch(error => {
-                        // Trata erros de rede ou outras falhas na requisição
                         console.error('Erro na requisição:', error);
                     });
             } else {
                 console.log('Ocorreu um erro durante o login');
-                // !inserir pop de erro aqui
+                exibirMensagemErro();
             }
-        })
-    })
+        });
+    });
+
+    function exibirMensagemErro() {
+        const mensagemErro = document.getElementById('mensagem-erro');
+        mensagemErro.textContent = 'Senha incorreta. Por favor, tente novamente.';
+        mensagemErro.style.display = 'block';
+    }
+
 
 }

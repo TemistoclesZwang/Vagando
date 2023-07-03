@@ -1,5 +1,3 @@
-// import { Cadastro } from "../models/MCadastro";
-// import {sqlite3} from "sqlite3";
 import * as sqlite3 from 'sqlite3';
 import * as fs from 'fs';
 
@@ -21,9 +19,6 @@ export class RLogin {
                     if (err) {
                         console.log('Nenhuma tabela de cadastros encontrada para fazer login:');
                         // !refatorar
-                        // console.error('Nenhuma tabela de cadastros encontrada \
-                            // para fazer login:', err);
-                        // reject(err);
                     } else {
                         resolve(rows);
                     }
@@ -39,7 +34,6 @@ export class RLogin {
 
         //. quando o ID não é encontrado retorna unfedined e não da erro
         try {
-            // const query: string = `SELECT * FROM Cadastros WHERE id = ?`;
             const query: string = `SELECT password FROM Cadastros WHERE email = ?`;
 
             return new Promise((resolve, reject) => {
@@ -68,10 +62,8 @@ export class RLogin {
                 if (err) {
                     console.error('Email não existe:', err);
                     reject(err)
-                    // return null
                 } else {
                     resolve(row.password);
-                    // return row;
                 }
             });
         });
@@ -89,10 +81,8 @@ async returnIdForToken(email: string): Promise < any > {
                 if (err) {
                     console.error('Email não existe:', err);
                     reject(err)
-                    // return null
                 } else {
                     resolve(row.id);
-                    // return row;
                 }
             });
         });

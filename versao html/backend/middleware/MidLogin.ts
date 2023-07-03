@@ -1,19 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { tokenContext } from '../controller/CLogin';
+import dotenv from 'dotenv';
 
 
-const secretKey: string = 'teste'
+dotenv.config();
+const secretKey = process.env.JWT_KEY || '';
 
-// .essa senha precisa ser a mesma usada no controller que criou o token
 
 const MidLogin = (request: Request, response: Response, next: NextFunction) => {
-    // const token = request.headers.authorization?.split(' ')[1];
     const token = tokenContext.token;
-    // console.log('token',request.headers.authorization);
-    
-    // Obtenha o token do header Authorization
-
     if (!token) {
         return response.status(401).json({ message: 'Token não fornecido' });
     }
@@ -22,16 +18,6 @@ const MidLogin = (request: Request, response: Response, next: NextFunction) => {
         if (err) {
             return response.status(401).json({ message: 'Token inválido' });
         }
-
-        // O token é válido, você pode fazer qualquer processamento adicional com o `decoded`
-        
-
-        // console.log(request);
-        
-
-        
-        
-        // Continue com o fluxo normal da aplicação
         next();
     });
 };

@@ -73,8 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const form = document.querySelector('#formulario form');
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita o envio do formulário para atualizar a página
-
+        event.preventDefault();
         const formData = new FormData(form);
         const formEntries = Array.from(formData.entries());
         if (empresaButton.checked) {

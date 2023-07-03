@@ -7,8 +7,6 @@ async function getInfosCardsIniciais() {
         'method': 'PUT',
         'headers': {
             'Content-Type': 'application/json',
-            // 'Authorization': `Bearer ${token}`
-
         },
         body: JSON.stringify(login)
     };
@@ -28,7 +26,6 @@ async function pegarDadosDoUsuario() {
             'Content-Type': 'application/json'
 
         },
-        // body: JSON.stringify(login)
     };
 
     const response = await fetch('http://localhost:3005/feed', config);
@@ -70,12 +67,9 @@ function curtir(cardClone, id) {
 }
 
 
-
-
 function renderInfosCards() {
     const feedContainer = document.getElementById('id-feed');
 
-    // Verifique se o feedContainer existe
     if (!feedContainer) {
         console.error('Elemento #feed não encontrado!');
         return;
@@ -83,7 +77,6 @@ function renderInfosCards() {
 
     getInfosCardsIniciais().then(result => {
         // Manipula a resposta da requisição
-        // console.log(result['cardsRetornados']);
         const dadosDosCardsDaApi = result['cardsRetornados']
 
         // Itere pelos nomes e gere os templates
@@ -100,19 +93,12 @@ function renderInfosCards() {
 
             curtir(cardClone, selecionarIdDoCard.id)
 
-
             // Adicione o card clonado ao container do feed
             feedContainer.appendChild(cardClone);
         });
     })
         .catch(error => {
-            // Trata erros de rede ou outras falhas na requisição
             console.error('Erro na requisição:', error);
         });
-
-
-
-    // Busque os nomes da API ou use nomes estáticos para testar
-    // const names = ['Fulano 1', 'Fulano 2', 'Fulano 3'];
 
 }

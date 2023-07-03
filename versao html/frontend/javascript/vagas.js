@@ -7,14 +7,11 @@ async function getInfosCardsIniciais() {
         'method': 'POST',
         'headers': {
             'Content-Type': 'application/json',
-            // 'Authorization': `Bearer ${token}`
-
         },
         body: JSON.stringify(paginasParaCarregar)
     };
 
     const response = await fetch('http://localhost:3005/vagas/historico', config);
-    // console.log(response.json());
     return await response.json();
 
 }
@@ -28,7 +25,6 @@ async function pegarDadosDoUsuario() {
             'Content-Type': 'application/json'
 
         },
-        // body: JSON.stringify(login)
     };
 
     const response = await fetch('http://localhost:3005/feed', config);

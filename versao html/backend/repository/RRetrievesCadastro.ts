@@ -1,18 +1,11 @@
-// import { Cadastro } from "../models/MCadastro";
-// import {sqlite3} from "sqlite3";
+
 import * as sqlite3 from 'sqlite3';
-// import bcrypt from 'bcrypt'
-// import { hash } from 'bcrypt';
-// import * as fs from 'fs';
-
-
 
 
 export class RRetrieves {
     private db: sqlite3.Database;
 
     constructor() {
-        // !refatorar para detecta se db já existe
         this.db = new sqlite3.Database('data.db', (err) => {
             if (err) {
                 console.error('Erro ao abrir o banco de dados:', err);
@@ -38,8 +31,6 @@ export class RRetrieves {
             date_time TEXT DEFAULT (datetime('now'))
             )
             `;
-        // FOREIGN KEY (id_post) REFERENCES Posts(id)
-        // ! se o banco de dados existe, não preciso fazer nada
         this.db.run(query, (err) => { 
             if (err) {
                 console.error('Erro ao criar a tabela:', err);
@@ -61,7 +52,6 @@ export class RRetrieves {
             if (err) {
                 console.error('Erro ao recuperar registros:', err);
             } else {
-                // console.log('Registros recuperados:', rows);
                 resolve(rows)
             }
         });
@@ -70,9 +60,7 @@ export class RRetrieves {
         console.error('Erro ao obter cadastro:', error);
         throw error;
     }
-    // Exemplo de uso da função recuperar
-    // recuperar(1); // Recupera os registros de 1 a 10
-    // recuperar(2); // Recupera os registros de 11 a 20
+
 }
 
 
@@ -95,7 +83,6 @@ export class RRetrieves {
         }
     }
 
-    // id , tipoUsuario ,tipoIdentificado, nome , dataNascimento , email , password
 
 
     async retrieve(id: string): Promise<any> {

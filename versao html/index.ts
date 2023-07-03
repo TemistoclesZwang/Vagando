@@ -1,12 +1,7 @@
-// import express from 'express';
 import express = require('express');
-
-// import cors from 'cors';
 import cors = require('cors');
 
 
-// import router, {rotas} from './backend/routes/rotas';
-// import rotas = require('./backend/routes/rotas');
 import rotas from './backend/routes/rotas'
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "./backend/doc/swagger.json";
